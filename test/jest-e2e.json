@@ -1,0 +1,19 @@
+{
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
+  "verbose": true,
+  "rootDir": ".",
+  "testEnvironment": "node",
+  "testRegex": ".e2e-spec.ts$",
+  "transform": {
+    "^.+\\.(t|j)s?$": [
+      "@swc/jest"
+    ]
+  },
+  "testTimeout": 500,
+  "globalSetup": "./utils/global-mock-setup.ts",
+  "globalTeardown": "./utils/global-mock-teardown.ts"
+}
