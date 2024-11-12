@@ -1,0 +1,8 @@
+syntax = "proto3";
+package halome.internal.channel.v3.services;
+
+import "halome/channel/v3/data_channel.proto";
+
+service InternalDataChannelService {
+  rpc CreateDataChannel(CreateDataChannelRequest) returns (CreateDataChannelResponse) {}
+}

@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package halome.internal.channel.v3;
+
+message CreateDataChannelRequest {
+  string workspace_id = 1;
+  string channel_id = 2;
+  string name = 3;
+}
+
+message CreateDataChannelResponse {
+  bool ok = 1;
+  string data = 2;
+  string error = 3;
+}

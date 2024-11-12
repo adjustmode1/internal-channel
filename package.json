@@ -1,7 +1,6 @@
 {
   "name": "@adjustmode1/internal-channel",
-  "private": true,
-  "version": "3.5.22-alpha.0",
+  "version": "v0.0.1",
   "description": "Nest TypeScript starter repository",
   "license": "MIT",
   "engines": {
@@ -10,6 +9,7 @@
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "swc --ignore \"**/*.spec.ts,src/hmr.ts\" --delete-dir-on-start --out-dir dist/ src/",
+    "build-type": ".bin/build-types.sh",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start -b swc -w",
@@ -24,13 +24,13 @@
     "prepare": "[ \\\"$npm_config_production\\\" ] && exit 0; husky install"
   },
   "dependencies": {
+    "@adjustmode1/proto-files": "3.0.1",
     "@amplication/opentelemetry-nestjs": "^4.3.7",
     "@grpc/grpc-js": "^1.8.11",
     "@grpc/proto-loader": "^0.7.5",
     "@halomeapis/halome-error-codes": "^0.2.27",
     "@halomeapis/nestjs-common-modules": "^0.4.2",
     "@metinseylan/nestjs-opentelemetry": "^3.0.0",
-    "@adjustmode1/proto-files": "3.0.1",
     "@nestjs/cli": "^10.1.18",
     "@nestjs/common": "^10.2.6",
     "@nestjs/config": "^3.1.1",
@@ -49,6 +49,7 @@
     "@opentelemetry/sdk-trace-base": "^1.17.0",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.0",
+    "glob": "^11.0.0",
     "google-proto-files": "^3.0.3",
     "ioredis": "^5.3.2",
     "js-yaml": "^4.1.0",
