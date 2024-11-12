@@ -1,6 +1,8 @@
 import {CreateDataChannelRequest, CreateDataChannelResponse} from "@adjustmode1/proto-files";
 import {Observable} from "rxjs";
 
+export * from '@adjustmode1/proto-files';
+
 export interface InternalChannelInterface {
   CreateDataChannel(
     data: CreateDataChannelRequest
