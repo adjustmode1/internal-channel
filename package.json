@@ -4,7 +4,6 @@
   "description": "Nest TypeScript starter repository",
   "license": "MIT",
   "files": [
-    "dist",
     "src/protos",
     "src/typings"
   ],
