@@ -2,6 +2,8 @@ import { Logger } from '@nestjs/common';
 import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 
 import { CreateDataChannelCommand } from '../impl';
+import {ChannelEntity} from "../../../../typings";
+import {ulid} from "ulid";
 
 @CommandHandler(CreateDataChannelCommand)
 export class CreateDataChannelHandler
@@ -15,13 +17,22 @@ export class CreateDataChannelHandler
     workspaceId,
     name
   }: CreateDataChannelCommand): Promise<
-    string | Error
+    ChannelEntity | Error
   > {
     this.logger.verbose('.execute', {
       workspaceId,
       name,
     });
 
-    return `${workspaceId}/${name}`
+    const result: ChannelEntity = {
+      workspaceId: workspaceId,
+      name: name,
+      channelId: ulid(),
+      message: ulid(),
+      avatar: ulid(),
+      type: "CHANNEL_TYPE_ENUM_CHANNEL"
+    } as ChannelEntity
+
+    return result;
   }
 }

@@ -1,6 +1,6 @@
 import {
   CreateDataChannelResponse,
-} from '@adjustmode1/proto-files';
+} from '../../typings';
 import { Controller, Logger } from '@nestjs/common';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { GrpcMethod } from '@nestjs/microservices';
@@ -9,6 +9,7 @@ import {
   CreateDataChannelCommand,
 } from './commands/impl';
 import {CreateDataChannelDto} from "../../dtos";
+import {ChannelEntity} from "../../typings";
 
 @Controller()
 export class ChannelController {
@@ -30,7 +31,7 @@ export class ChannelController {
 
     const result = await this.commandBus.execute<
       CreateDataChannelCommand,
-      string | Error
+      ChannelEntity | Error
     >(
       new CreateDataChannelCommand(
         data.workspaceId,
@@ -41,7 +42,7 @@ export class ChannelController {
     if (result instanceof Error) {
       return {
         ok: false,
-        error: 'error',
+        error: result,
       };
     }
 
