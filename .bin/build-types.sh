@@ -9,6 +9,6 @@ node_modules/.bin/proto-loader-gen-types --longs=String --enums=String --default
 
 rm -rf dist
 
-node src/utils/write-index.js
+npx tsx src/utils/write-index.ts
 
 node_modules/.bin/tsc
