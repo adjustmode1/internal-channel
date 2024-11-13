@@ -34,7 +34,6 @@ export class ChannelController {
     >(
       new CreateDataChannelCommand(
         data.workspaceId,
-        data.channelId,
         data.name
       ),
     );

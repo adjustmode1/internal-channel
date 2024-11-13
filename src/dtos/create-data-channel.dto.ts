@@ -16,10 +16,5 @@ export class CreateDataChannelDto implements CreateDataChannelRequest {
   @IsString()
   @IsNotEmpty()
   @IsDefined()
-  channelId!: string;
-
-  @IsString()
-  @IsNotEmpty()
-  @IsDefined()
   name!: string;
 }

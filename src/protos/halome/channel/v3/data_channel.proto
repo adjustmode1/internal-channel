@@ -12,6 +12,73 @@ enum ChannelTypeEnum {
   CHANNEL_TYPE_ENUM_BROADCAST = 2;
 }
 
+message Error {
+  int32 code = 1;
+  string message = 2;
+  repeated string details = 3;
+}
+
+enum DirectMessageStatusEnum {
+  // PENDING: The recipient has not replied or accept the message request
+  DIRECT_MESSAGE_STATUS_ENUM_PENDING = 0;
+  // CONTACTED: The recipient has accepted the message request or they were friends
+  DIRECT_MESSAGE_STATUS_ENUM_CONTACTED = 1;
+}
+
+message PrivacySettings {
+  // Disable forwarding, copying, saving, or screenshotting content within the conversation.
+  message RestrictSavingContent {
+    bool enable = 1;
+  }
+  RestrictSavingContent restrict_saving_content = 1;
+}
+
+enum MediaPermissionSettingEnum {
+  // ALWAYS_ASK (DEFAULT): ask everytime user received new media message
+  MEDIA_PERMISSION_SETTING_ENUM_ALWAYS_ASK = 0;
+  // ALLOW: accept incoming media messages from every body
+  MEDIA_PERMISSION_SETTING_ENUM_ALLOW = 1;
+  // NOT_ALLOW: au-to denied incoming media messages
+  MEDIA_PERMISSION_SETTING_ENUM_NOT_ALLOW = 2;
+}
+
+message DMSettingEmbed {
+  map<string, MediaPermissionSettingEnum> media_permission_settings = 1;
+}
+
+
+message ChannelEntity {
+  string geocode = 1;
+  // Entity properties
+  string workspace_id = 2;
+  string channel_id = 3;
+  string user_id = 4;
+  ChannelTypeEnum type = 5;
+  optional string avatar = 6;
+  optional string original_avatar = 7;
+  optional string name = 8;
+
+  repeated string banned_user_ids = 9;
+  optional string recipient_id = 10;
+  optional bool is_private = 14;
+  optional string dm_id = 15;
+
+  PrivacySettings private_setting = 16;
+  optional DMSettingEmbed dm_setting = 17;
+
+  DirectMessageStatusEnum dm_status = 18;
+  //Original inviteLink, never expires
+  optional string invite_link = 19;
+
+  optional string block_time = 95;
+  optional string accept_time = 96;
+  optional string reject_time = 97;
+
+  string create_time = 98;
+  string update_time = 99;
+}
+
+
 message CreateDataChannelRequest {
   string workspace_id = 1;
   string user_id = 2;
@@ -25,6 +92,6 @@ message CreateDataChannelRequest {
 
 message CreateDataChannelResponse {
   bool ok = 1;
-  string data = 2;
-  string error = 3;
+  ChannelEntity data = 2;
+  Error error = 3;
 }

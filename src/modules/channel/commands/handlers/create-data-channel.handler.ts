@@ -13,17 +13,15 @@ export class CreateDataChannelHandler
 
   async execute({
     workspaceId,
-    channelId,
     name
   }: CreateDataChannelCommand): Promise<
     string | Error
   > {
     this.logger.verbose('.execute', {
       workspaceId,
-      channelId,
       name,
     });
 
-    return `${workspaceId}/${channelId}/${name}`
+    return `${workspaceId}/${name}`
   }
 }
