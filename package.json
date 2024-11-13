@@ -1,6 +1,6 @@
 {
   "name": "@adjustmode1/internal-channel",
-  "version": "v0.0.1",
+  "version": "1.0.0",
   "description": "Nest TypeScript starter repository",
   "license": "MIT",
   "engines": {
