@@ -3,6 +3,11 @@
   "version": "3.0.2",
   "description": "Nest TypeScript starter repository",
   "license": "MIT",
+  "files": [
+    "dist",
+    "src/protos",
+    "src/typings"
+  ],
   "engines": {
     "node": ">=18 <19"
   },
