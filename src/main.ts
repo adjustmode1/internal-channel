@@ -8,6 +8,7 @@ import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { MicroserviceOptions, Transport } from '@nestjs/microservices';
 import { dirname, resolve } from 'path';
+import {cwd} from 'process';
 
 import { GrpcModule } from './grpc.module';
 
@@ -27,20 +28,17 @@ const LOG_LEVEL = config.get('log.level', [
 
 async function bootstrap() {
   const paths = [
-    '@halomeapis/halome-proto-files/halome/internal/user/v3/services/data_user_profile.proto',
-    '@halomeapis/halome-proto-files/halome/internal/user/v3/services/data_user_connect.proto',
-    '@halomeapis/halome-proto-files/halome/internal/user/v3/services/ringback_tone.proto',
-    '@halomeapis/halome-proto-files/halome/internal/user/v3/services/data_user_visited_profile.proto',
+    `${cwd()}/src/protos/halome/channel/v3/services/data_channel.proto`,
   ];
 
   const options = {
     url: `0.0.0.0:${SERVICE_PORT}`,
-    package: ['halome.internal.user.v3.services'],
+    package: ['halome.internal.channel.v3.services'],
     protoPath: paths.map((path) => require.resolve(path)),
     loader: {
       includeDirs: [
         dirname(require.resolve('google-proto-files/package.json')),
-        dirname(require.resolve('@halomeapis/halome-proto-files/package.json')),
+        dirname(require.resolve(`${cwd()}/package.json`)),
       ],
     },
     ...config.get('grpc.options', {}),

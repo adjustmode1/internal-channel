@@ -2,10 +2,25 @@ syntax = "proto3";
 
 package halome.internal.channel.v3;
 
+// Types of channel
+enum ChannelTypeEnum {
+  // DM: Direct message 1-1
+  CHANNEL_TYPE_ENUM_DM = 0;
+  // CHANNEL: A group can send message to multiple user 1-n
+  CHANNEL_TYPE_ENUM_CHANNEL = 1;
+  // BROADCAST: A broadcast channel consists of a single sender and multiple receivers
+  CHANNEL_TYPE_ENUM_BROADCAST = 2;
+}
+
 message CreateDataChannelRequest {
   string workspace_id = 1;
-  string channel_id = 2;
-  string name = 3;
+  string user_id = 2;
+  string geocode = 3;
+  string name = 4;
+  optional string avatar = 5;
+  optional string original_avatar = 6;
+
+  optional ChannelTypeEnum channel_type = 7;
 }
 
 message CreateDataChannelResponse {
