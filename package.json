@@ -6,7 +6,8 @@
   "files": [
     "src/protos",
     "src/typings",
-    "src/interface"
+    "src/interface",
+    "swagger"
   ],
   "engines": {
     "node": ">=18 <19"
@@ -15,6 +16,7 @@
     "prebuild": "rimraf dist",
     "build": "swc --ignore \"**/*.spec.ts,src/hmr.ts\" --delete-dir-on-start --out-dir dist/ src/",
     "build-type": ".bin/build-types.sh",
+    "swagger": ".bin/build-types.sh",
     "prepublishOnly": "sh .bin/republish.sh",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
