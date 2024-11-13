@@ -5,7 +5,8 @@
   "license": "MIT",
   "files": [
     "src/protos",
-    "src/typings"
+    "src/typings",
+    "src/interface"
   ],
   "engines": {
     "node": ">=18 <19"
