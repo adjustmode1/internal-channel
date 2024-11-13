@@ -117,5 +117,5 @@ dist
 .pnp.*
 
 # proto typings
-src/typings
+#src/typings
 .idea
